@@ -71,7 +71,6 @@ Information text in the footer
 **GALLERY_FOOTER_EMAIL** -- Default: "gallery@django_portfolio.dev"
 
 Contact email address in the footer. Override with a blank string to hide
-
 **GALLERY_THUMBNAIL_SIZE** 
 
 The target thumbnail height in px. This will vary slightly in rendering due to the justified layout
