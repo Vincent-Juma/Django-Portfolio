@@ -6,3 +6,7 @@ migrate:
 
 migrations:
 	python manage.py makemigrations
+gh:
+	git push origin gh-pages
+master:
+	git push origin master
