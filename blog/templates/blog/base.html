@@ -40,6 +40,10 @@
           <a class="nav-link active" href="#">link</a>
         </li>
       </ul>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+      </div>
     </nav>
     {% if messages %}
       {% for message in messages %}
