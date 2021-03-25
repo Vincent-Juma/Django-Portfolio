@@ -15,10 +15,10 @@
     <title>Django Blog</title>
     {% endif %}
   </head>
-  <body style="background-image: url(./img50.jpg);">
+  <body style="background-color: wheat;" >
 
-    <nav class="navbar fixed-top navbar-light bg-light">
-      <a class="navbar-brand" href="#">Welcome to My Gallery</a>
+    <nav class="navbar fixed-top navbar-light bg-dark">
+      <a class="navbar-brand" style="font-size: xx-large; color: whitesmoke;" href="#">Welcome to My Gallery</a>
       <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link active" href="#">Home</a>
@@ -42,12 +42,12 @@
       </ul>
       <div class="navbar-nav">
         {% if user.is_authenticated %}
-        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-        <a class="nav-item nav-link active" href="{% url 'logout' %}">Logout</a>
+        <a class="nav-item nav-link active" style="color: honeydew;" href="{% url 'profile' %}">Profile</a>
+        <a class="nav-item nav-link active" style="color: tomato;" href="{% url 'logout' %}">Logout</a>
 
         {% else %}
-        <a class="nav-item nav-link active" href="{% url 'login' %}">Login</a>
-        <a class="nav-item nav-link active" href="{% url 'register' %}">Register</a>
+        <a class="nav-item nav-link active" style="color: greenyellow;" href="{% url 'login' %}">Login</a>
+        <a class="nav-item nav-link active" style="color: greenyellow;" href="{% url 'register' %}">Register</a>
         {% endif %}
       </div>
     </nav>
@@ -61,8 +61,26 @@
           {% endfor %}
         {% endif %}
       {% block content %}
+
+      <center>
+        
+
+        <h1>My Gallery Images </h1>
+        <hr/>
+        {% for results in imggal %}
+        {{ results.imgtitle }} <br>
+        {{ results.imgdesc }} 
+        <img src="{{ results.image.url }}" height="140" width="150" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" >
+        <hr/>
+        {% endfor %}
+
+        
+
+    </center>
+
       {% endblock content %}
-  </div>
+
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

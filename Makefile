@@ -10,3 +10,7 @@ gh:
 	git push origin gh-pages
 master:
 	git push origin master
+app:
+	python manage.py startapp app
+sync:
+	python manage.py migrate --run-syncdb
