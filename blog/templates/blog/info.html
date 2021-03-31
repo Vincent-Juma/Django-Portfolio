@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <center>
+
+        <h1>My Gallery Images </h1>
+        <hr/>
+        {% for results in imggal %}
+        {{ results.imgtitle }} <br>
+        {{ results.imgdesc }} 
+        <img src="{{ results.image.url }}" height="150" width="160" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" >
+        <hr/>
+        {% endfor %}
+
+    </center>
+ 
+{% endblock content %}

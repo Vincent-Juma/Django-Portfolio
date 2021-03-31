@@ -20,15 +20,17 @@
       <nav class="navbar fixed-top navbar-light bg-dark">
         <a class="navbar-brand" style="font-size: xx-large; color: whitesmoke;" href="#">Welcome to My Gallery</a>
         <ul class="nav nav-pills">
+          <div class="dropdown-divider"></div>
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'blog-home' %}">Home</a>
+            <a class="nav-link active" href="{% url 'home' %}">Home</a>
           </li>
+          <div class="dropdown-divider"></div>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{% url 'about' %}">About</a>
-              <a class="dropdown-item" href="#">Life</a>
-              <a class="dropdown-item" href="#">Career</a>
+              <a class="dropdown-item" href="{% url 'career' %}">Career</a>
+              <a class="dropdown-item" href="{% url 'info' %}">Info</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Separated link</a>
             </div>
@@ -37,7 +39,7 @@
             <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Contacts</a>
+            <a class="nav-link active" href="{% url 'contacts' %}">Contacts</a>
           </li>
         </ul>
 

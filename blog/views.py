@@ -10,3 +10,13 @@ def home(request):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
+
+def contacts(request):
+    return render(request, 'blog/contacts.html', {'title': 'Contacts'})
+
+def info(request):
+    return render(request, 'blog/info.html', {'title': 'Info'})
+
+def career(request):
+    return render(request, 'blog/career.html', {'title': 'Career'})
+
