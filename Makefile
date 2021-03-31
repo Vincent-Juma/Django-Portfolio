@@ -11,6 +11,10 @@ gh:
 master:
 	git push origin master
 app:
-	python manage.py startapp app
+	python manage.py startapp$ {{app}}
 sync:
 	python manage.py migrate --run-syncdb
+
+source:
+	source virtual/bin/activate
+

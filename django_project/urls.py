@@ -20,6 +20,7 @@ from users import views as user_views
 from django.conf.urls.static import static
 from django.conf import settings
 from imagegallery import views as img_views
+# from . import views as img_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,8 +29,12 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('', include('blog.urls')),
-    path('',img_views.imagedisplay)
+    # path('gallery/', img_views..as_view(template_name='gallery.html'), name='gallery'),
+    path('gallery/',img_views.imagedisplay),
 
 ]
 
-urlpatterns +=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns +=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
