@@ -30,7 +30,8 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('', include('blog.urls')),
     # path('gallery/', img_views..as_view(template_name='gallery.html'), name='gallery'),
-    path('gallery/',img_views.imagedisplay),
+    path('gallery/',img_views.imagedisplay, name='gallery'),
+    #  path('gallery/',img_views.imagedisplay(template_name='imagegallery/gallery.html'), name='gallery'),
 
 ]
 
