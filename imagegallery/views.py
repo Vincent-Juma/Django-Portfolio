@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from imagegallery.models import imggal
+from django.shortcuts import render, redirect
+from imagegallery.models import imggal, Image, Category, Location
 from .models import Post
+from django.http import Http404
 
 def imagedisplay(request):
     resultsdisplay=imggal.objects.all()
