@@ -1,1 +1,1 @@
-web: gunicorn insta_project.wsgi
+web: gunicorn my_gallery.wsgi
