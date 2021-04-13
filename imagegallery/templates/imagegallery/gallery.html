@@ -1,21 +1,24 @@
 {% extends "imagegallery/base.html" %}
 {% block content %}
-    
-        <h1>My Images</h1>
-      
-    <div class="container" >
-            <img src="" alt="">
-          <div class="card-body">
-          <h5 class="card-title">{{ results.imgtitle }} </h5><br>
-          <p class="card-text">{{ results.imgdesc }} </p>
+    <center>
 
-      {% for results in imggal %}
+        <!-- <h1>My Images</h1>
+        <hr/>
+        {% for results in imggal %}
         {{ results.imgtitle }} <br>
-        {{ results.imgdesc }}
-        <img src="{{ results.image.url }}" height="600" width="150" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}">
-        <hr>
-        <p class="card-text"><small class="text-muted">posted 2 days ago</small>
-      {% endfor %}
-    </div>
+        {{ results.imgdesc }}  -->
+        
+        <div class="container">
+            <div class="card">
+                <img src="{{ results.image.url }}" height="150" width="150" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{ results.imgtitle }} </h5><br>
+                <p class="card-text">{{ results.imgdesc }} </p>
+                <p class="card-text"><small class="text-muted">posted 2 days ago</small></p>
+              </div>
+            </div>
+            
+        {% endfor %}
+    </center>
     
 {% endblock content %}
