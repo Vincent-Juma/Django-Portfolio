@@ -3,19 +3,23 @@
     
         <h1>My Images</h1>
         <hr/>
-        <!-- {% for results in imggal %}
-        {{ results.imgtitle }} <br>
-        {{ results.imgdesc }}
-         -->
+      
     <div class="container" >
             
-    <img src="{{ results.image.url }}" height="800" width="150" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" class="card-img-top">
-          <div class="card-body">
+          <!-- <div class="card-body">
           <h5 class="card-title">{{ results.imgtitle }} </h5><br>
-          <p class="card-text">{{ results.imgdesc }} </p>
-          <p class="card-text"><small class="text-muted">posted 2 days ago</small>
+          <p class="card-text">{{ results.imgdesc }} </p> -->
+          
           </div>
-           {% endfor %}
+
+      {% for results in imggal %}
+        {{ results.imgtitle }} <br>
+        {{ results.imgdesc }}
+
+        <img src="{{ results.image.url }}" height="800" width="150" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" class="card-img-top"><hr>
+
+        <p class="card-text"><small class="text-muted">posted 2 days ago</small>
+      {% endfor %}
   
     
 {% endblock content %}
