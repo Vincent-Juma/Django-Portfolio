@@ -6,20 +6,16 @@
       
     <div class="container" >
             
-          <!-- <div class="card-body">
+          <div class="card-body">
           <h5 class="card-title">{{ results.imgtitle }} </h5><br>
-          <p class="card-text">{{ results.imgdesc }} </p> -->
-          
-          </div>
+          <p class="card-text">{{ results.imgdesc }} </p>
 
       {% for results in imggal %}
         {{ results.imgtitle }} <br>
         {{ results.imgdesc }}
-
         <img src="{{ results.image.url }}" height="800" width="150" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" class="card-img-top"><hr>
-
         <p class="card-text"><small class="text-muted">posted 2 days ago</small>
       {% endfor %}
-  
+    </div>
     
 {% endblock content %}
