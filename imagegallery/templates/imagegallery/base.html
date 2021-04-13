@@ -1,11 +1,10 @@
-<!-- {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{%static 'blog/main.css' %}">
     {% if title %}
     <title> Customized Instagram! - {{ title }}</title>
@@ -15,67 +14,66 @@
   </head>
   <body style="background-color: rgb(91, 209, 245);" >
 
-     
-    </body>  
-</html> -->
+      <nav class="navbar fixed-top navbar-light bg-dark">
+        <a class="navbar-brand" style="font-size: xx-large; color: whitesmoke;" href="#">Welcome to My Gallery</a>
+        <ul class="nav nav-pills">
+          <div class="dropdown-divider"></div>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'gallery' %}">Home</a>
+          </li>
+          <div class="dropdown-divider"></div>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'gallery' %}">Gallery</a>
+          </li>
+          <li class="dropdown" style="background-color: gainsboro;" >
+            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" style="color:blue;font-weight:bold;font-family: 'Quicksand', sans-serif;">location
+              <span class="caret" style="color:blue;" ></span>
+                   </a>
+                   <div class="dropdown-menu" aria-labelledby="navbarDropdown"style="margin-left">
+                     {% for location in locations %}
+                       <a class="dropdown-item" href="{% url 'displayLocation' location.id%}">{{location.name}}</a>
+                       {% endfor %}
+                   </div>
 
-{% load bootstrap4 %}
-{% load static%}
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  {% if title %}
-  <title> My Gallery - {{ title }}</title>
-  {% else %}
-  <title>My Gallery</title>
-  {% endif %}
+           </li>
+        </ul>
+    
+      <div class="navbar-nav">
+        {% if user.is_authenticated %}
+        <a class="nav-item nav-link active" style="color: honeydew;" href="{% url 'profile' %}">Profile</a>
+        <a class="nav-item nav-link active" style="color: tomato;" href="{% url 'logout' %}">Logout</a>
+
+        {% else %}
+        <a class="nav-item nav-link active" style="color: greenyellow;" href="{% url 'login' %}">Login</a>
+        <a class="nav-item nav-link active" style="color: #ffffff;" href="{% url 'register' %}">Register</a>
+        {% endif %}
+      </div>
+    </nav>
+    <br><br><br><br><br>
+    <div class="container">
+      
+      <center>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% block content %}
+
+      {% endblock content %}
+
+      </center> 
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
-  <nav class="navbar fixed-top navbar-light bg-dark">
-    <a class="navbar-brand" style="font-size: xx-large; color: whitesmoke;" href="#">Welcome to My Gallery</a>
-    <ul class="nav nav-pills">
-      <div class="dropdown-divider"></div>
-      <li class="nav-item">
-        <a class="nav-link active" href="{% url 'home' %}">Home</a>
-      </li>
-      <div class="dropdown-divider"></div>
-      <li class="nav-item">
-        <a class="nav-link active" href="{% url 'gallery' %}">Gallery</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'contacts' %}">Contacts</a>
-      </li>
-    </ul>
-
-  <div class="navbar-nav">
-    {% if user.is_authenticated %}
-    <a class="nav-item nav-link active" style="color: honeydew;" href="{% url 'profile' %}">Profile</a>
-    <a class="nav-item nav-link active" style="color: tomato;" href="{% url 'logout' %}">Logout</a>
-
-    {% else %}
-    <a class="nav-item nav-link active" style="color: greenyellow;" href="{% url 'login' %}">Login</a>
-    <a class="nav-item nav-link active" style="color: #ffffff;" href="{% url 'register' %}">Register</a>
-    {% endif %}
-  </div>
-</nav>
-<br><br><br><br><br>
-
-<body style="background-color:rgb(136, 104, 104);">
-
-  <div class="container"></div>
-  {% block content %}{% endblock %}
-
-</div>
-{% block scripts %}
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-
-
-</body>
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% endblock %}
+  </body>
 </html>
-
-

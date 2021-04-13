@@ -2,15 +2,23 @@
 {% block content %}
     <center>
 
-        <h1>My Images</h1>
+        <!-- <h1>My Images</h1>
         <hr/>
         {% for results in imggal %}
         {{ results.imgtitle }} <br>
-        {{ results.imgdesc }} 
-        <img src="{{ results.image.url }}" height="150" width="160" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" >
-        <hr/>
+        {{ results.imgdesc }}  -->
+        
+        <div class="card-group" style="max-width: 48%;" >
+            <div class="card">
+                <img src="{{ results.image.url }}" height="150" width="150" alt=" {{ results.imgtitle }}" title=" {{ results.imgtitle }}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{ results.imgtitle }} </h5><br>
+                <p class="card-text">{{ results.imgdesc }} </p>
+                <p class="card-text"><small class="text-muted">posted 2 days ago</small></p>
+              </div>
+            </div>
+            
         {% endfor %}
-
     </center>
- 
+    
 {% endblock content %}
