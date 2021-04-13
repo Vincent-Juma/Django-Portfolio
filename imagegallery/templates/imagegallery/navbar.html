@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<nav class="navbar navbar-inverse" style=" border: white; margin:5px;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'index' %}" style="color:blue;font-weight: bolder;font-family: 'Quicksand', sans-serif;">GALLA</a>
+    </div>
+
+
+      <div class="navbar-left ">
+
+          <ul>
+            <li class="dropdown" style="background-color: gainsboro;" >
+              <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" style="color:blue;font-weight:bold;font-family: 'Quicksand', sans-serif;">location
+                <span class="caret" style="color:blue;" ></span>
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown"style="margin-left">
+                       {% for location in locations %}
+                         <a class="dropdown-item" href="{% url 'displayLocation' location.id%}">{{location.name}}</a>
+                         {% endfor %}
+                     </div>
+
+             </li>
+           </ul>
+       </div>
+     </div>
+</nav>
+</body>
+</html>

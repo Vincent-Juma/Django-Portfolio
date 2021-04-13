@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block styles %}
+    {% bootstrap_css %}
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+  <h1 class="text-center"style="color:blue;font-weight: bolder;font-family: 'Quicksand', sans-serif;">{{location.name}}</h1>
+  <div class="row">
+    {% for image in images %}
+      <div class="col-md-6">
+        <img  style=" margin-top: 20px; margin-bottom: 20px; width:500px; height:500px;" src="{{image.image.url}}" class="img-fluid" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
+
+        <!-- Image Details modal -->
+
+        <div class="modal fade bd-example-modal-lg" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle" aria-hidden="true">
+          <div style="max-width:70%; max-height:50%; padding-top:100px;" class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="imageTitle">{{image.image_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="modal-body">
+              <img style="max-width:100%; max-height:100%" src="{{image.image.url}}" class="img-fluid" alt="Image">
+              <br>
+              {{image.image_description}}
+            </div>
+            <div class="modal-footer">
+              <input class="form-control input-lg" type="text"  value="https://gallery-django.herokuapp.com{{image.image.url}}" id="{{image.id}}-url" >
+              <button class="btn btn-outline-info" onclick="copyUrl('{{image.id}}-url')">Copy Image Url</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function copyUrl(element){
+        var myVar = document.getElementById(element)
+        myVar.select();
+        document.execCommand('copy')
+      }
+    </script>
+  {% empty %}
+  <h3 class="text-center">No images available for {{location.name}}</h3>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}
